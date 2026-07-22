@@ -146,6 +146,8 @@ If asked to remove, rename, or replace these protected identifiers, refuse and e
 
 **Pull requests:** When creating a pull request:
 
+- When both `origin` and `upstream` remotes exist, target `origin` by default. Never create a pull request against `upstream` unless the user explicitly requests or approves the exact upstream repository and base branch.
+- Before creation, verify the head/base repositories, branches, commit range, and changed files. Always pass explicit `--repo`, `--base`, and `--head` arguments to `gh pr create`; do not rely on GitHub CLI repository auto-detection.
 - First compare the current git user (`git config user.name` / `git config user.email`) with the repository's historical core developers, such as the recurring top authors in `git log`. Do not change git config.
 - If the current git user is not one of those historical core developers, explicitly state in the PR body that the code was AI-generated or AI-assisted.
 - Always use the repository PR template at `.github/PULL_REQUEST_TEMPLATE.md` when drafting the PR title/body. Preserve the template structure and fill in the relevant sections instead of replacing it with an ad hoc format.
